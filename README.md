@@ -1,62 +1,56 @@
-# 1) Insertion Sort – [22, 27, 16, 2, 18, 6]
+# Merge Sort – [16, 21, 11, 8, 12, 22]
 
-Insertion Sort mantığı: Her adımda diziyi soldan sağa gezer, o anki elemanı uygun pozisyona (önceki sıralanmış alt dizi içine) yerleştirir.
+## Mantık:
 
-## Adımlar:
+Diziyi sürekli ikiye böl → tek eleman kalana kadar.
 
-Başlangıç: [22, 27, 16, 2, 18, 6]
-İlk eleman (22) zaten sıralı kabul edilir.
+Sonra küçük küçük sıralı dizileri birleştir (merge).
 
-27 eklenir → [22, 27, 16, 2, 18, 6] (zaten büyük, yer değiştirme gerek yok)
+Aşamalar
 
-16 eklenir → 27’den küçük, 22’den küçük → [16, 22, 27, 2, 18, 6]
+Başlangıç:
+[16, 21, 11, 8, 12, 22]
 
-2 eklenir → hepsinden küçük → [2, 16, 22, 27, 18, 6]
+İkiye böl:
+[16, 21, 11] ve [8, 12, 22]
 
-18 eklenir → 27’den küçük, 22’den küçük, 16’dan büyük → [2, 16, 18, 22, 27, 6]
+Tekrar böl:
 
-6 eklenir → 27’den küçük, 22’den küçük, 18’den küçük, 16’dan küçük, 2’den büyük →
-[2, 6, 16, 18, 22, 27]
+[16, 21, 11] → [16] ve [21, 11]
 
-Son sıralı dizi: [2, 6, 16, 18, 22, 27]
+[8, 12, 22] → [8] ve [12, 22]
 
-## Big-O Gösterimi:
+Tekrar böl:
 
-Insertion Sort en kötü durumda O(n²) çalışır.
+[21, 11] → [21] ve [11]
 
-Burada n = 6 → Worst Case: 36 adım civarı karşılaştırma.
+[12, 22] → [12] ve [22]
 
-Big-O: O(n²)
+Birleştir (merge işlemleri):
 
-## 18 sayısı hangi case’e girer?
+[21] + [11] → [11, 21]
 
-Sıralı dizi: [2, 6, 16, 18, 22, 27]
+[16] + [11, 21] → [11, 16, 21]
 
-Best case → en başta olmalı (2)
+[12] + [22] → [12, 22]
 
-Worst case → en sonda olmalı (27)
+[8] + [12, 22] → [8, 12, 22]
 
-Average case → ortada olmalı → 18 ortadadır
+Son birleştirme:
+[11, 16, 21] + [8, 12, 22] → [8, 11, 12, 16, 21, 22]
 
-Cevap: Average Case.
+Sonuç: [8, 11, 12, 16, 21, 22]
 
-# 2) Selection Sort – [7, 3, 5, 8, 2, 9, 4, 15, 6]
+## Big-O Gösterimi
 
-Selection Sort: Her adımda minimum değeri bulup, baştaki eleman ile yer değiştirir.
+Merge Sort her zaman O(n log n) çalışır.
 
-İlk 4 adım:
+Çünkü:
 
-Başlangıç: [7, 3, 5, 8, 2, 9, 4, 15, 6]
-Minimum: 2 → 7 ile yer değiştir:
-[2, 3, 5, 8, 7, 9, 4, 15, 6]
+Bölme işlemi → log n derinlik
 
-Kalan [3, 5, 8, 7, 9, 4, 15, 6] içinde minimum 3, zaten doğru yerde:
-[2, 3, 5, 8, 7, 9, 4, 15, 6]
+Her seviyede birleşme işlemi → O(n)
 
-Kalan [5, 8, 7, 9, 4, 15, 6] içinde minimum 4 → 5 ile yer değiştir:
-[2, 3, 4, 8, 7, 9, 5, 15, 6]
+Toplam: O(n log n)
 
-Kalan [8, 7, 9, 5, 15, 6] içinde minimum 5 → 8 ile yer değiştir:
-[2, 3, 4, 5, 7, 9, 8, 15, 6]
-
-İlk 4 adım sonrası dizi: [2, 3, 4, 5, 7, 9, 8, 15, 6].
+Best Case = Average Case = Worst Case = O(n log n)
