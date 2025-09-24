@@ -1,56 +1,102 @@
-# Merge Sort – [16, 21, 11, 8, 12, 22]
+# Binary Search Tree – [7, 5, 1, 8, 3, 6, 0, 9, 4, 2]
 
-## Mantık:
+Root: İlk eleman 7 → root olur.
 
-Diziyi sürekli ikiye böl → tek eleman kalana kadar.
+    7
 
-Sonra küçük küçük sıralı dizileri birleştir (merge).
+5 < 7 → root'un soluna eklenir.
 
-Aşamalar
+    7
 
-Başlangıç:
-[16, 21, 11, 8, 12, 22]
+/
+5
 
-İkiye böl:
-[16, 21, 11] ve [8, 12, 22]
+1 < 7 → soluna bak → 1 < 5 → 5’in soluna eklenir.
 
-Tekrar böl:
+    7
 
-[16, 21, 11] → [16] ve [21, 11]
+/
+5
+/
+1
 
-[8, 12, 22] → [8] ve [12, 22]
+8 > 7 → root'un sağına eklenir.
 
-Tekrar böl:
+    7
 
-[21, 11] → [21] ve [11]
+/ \
+ 5 8
+/
+1
 
-[12, 22] → [12] ve [22]
+3 < 7 → sol, 3 < 5 → sol, 3 > 1 → 1’in sağına eklenir.
 
-Birleştir (merge işlemleri):
+    7
 
-[21] + [11] → [11, 21]
+/ \
+ 5 8
+/
+1
+\
+ 3
 
-[16] + [11, 21] → [11, 16, 21]
+6 < 7 → sol, 6 > 5 → 5’in sağına eklenir.
 
-[12] + [22] → [12, 22]
+    7
 
-[8] + [12, 22] → [8, 12, 22]
+/ \
+ 5 8
+/ \
+1 6
+\
+ 3
 
-Son birleştirme:
-[11, 16, 21] + [8, 12, 22] → [8, 11, 12, 16, 21, 22]
+0 < 7 → sol, 0 < 5 → sol, 0 < 1 → 1’in soluna eklenir.
 
-Sonuç: [8, 11, 12, 16, 21, 22]
+    7
 
-## Big-O Gösterimi
+/ \
+ 5 8
+/ \
+1 6
 
-Merge Sort her zaman O(n log n) çalışır.
+/
+0 3
 
-Çünkü:
+9 > 7 → sağ, 9 > 8 → 8’in sağına eklenir.
 
-Bölme işlemi → log n derinlik
+7
+/ \
+ 5 8
+/ \ \
 
-Her seviyede birleşme işlemi → O(n)
+1 6 9
+/
+0 3
 
-Toplam: O(n log n)
+4 < 7 → sol, 4 < 5 → sol, 4 > 1 → sağ, 4 > 3 → 3’ün sağına eklenir.
 
-Best Case = Average Case = Worst Case = O(n log n)
+7
+/ \
+ 5 8
+/ \ \
+
+1 6 9
+/
+0 3
+
+4
+
+2 < 7 → sol, 2 < 5 → sol, 2 > 1 → sağ, 2 < 3 → 3’ün soluna eklenir.
+
+```
+   7
+  / \
+ 5   8
+/ \     \
+1   6     9
+/ \
+0   3
+/ \
+2   4
+```
